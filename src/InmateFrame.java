@@ -1,5 +1,8 @@
 
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -224,105 +227,151 @@ private void uploadImage() {
     }
 
     // Add Inmate
-    private void addInmate() {
-        if (txtCode.getText().isEmpty() || txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty()
-                || birthDateChooser.getDate() == null || txtAddress.getText().isEmpty()
-                || txtComplexion.getText().isEmpty() || txtEyeColor.getText().isEmpty()
-                || txtSentence.getText().isEmpty() || timeServedChooser.getDate() == null
-                || timeEndChooser.getDate() == null || txtEmergencyContact.getText().isEmpty()
-                || txtEmergencyRelation.getText().isEmpty() || txtEmergencyPhone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields");
-            return;
-        }
-
-        try (Connection con = DBConnection.getConnection(); PreparedStatement ps = con.prepareStatement("INSERT INTO inmates "
-                + "(code, prison_id, cell_block_id, first_name, last_name, birth_date, address, marital_status, "
-                + "complexion, eye_color, crime_id, sentence, time_served, time_end, emergency_contact_name, "
-                + "emergency_contact_relation, emergency_contact_phone, visitor_privilege, status, image) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-
-            ps.setString(1, txtCode.getText());
-            ps.setInt(2, getSelectedId(comboPrison));
-            ps.setInt(3, getSelectedId(comboCellBlock));
-            ps.setString(4, txtFirstName.getText());
-            ps.setString(5, txtLastName.getText());
-            ps.setDate(6, new java.sql.Date(birthDateChooser.getDate().getTime()));
-            ps.setString(7, txtAddress.getText());
-            ps.setString(8, comboMaritalStatus.getSelectedItem().toString());
-            ps.setString(9, txtComplexion.getText());
-            ps.setString(10, txtEyeColor.getText());
-            ps.setInt(11, getSelectedId(comboCrime));
-            ps.setString(12, txtSentence.getText());
-            ps.setDate(13, new java.sql.Date(timeServedChooser.getDate().getTime()));
-            ps.setDate(14, new java.sql.Date(timeEndChooser.getDate().getTime()));
-            ps.setString(15, txtEmergencyContact.getText());
-            ps.setString(16, txtEmergencyRelation.getText());
-            ps.setString(17, txtEmergencyPhone.getText());
-            ps.setBoolean(18, checkVisitorPrivilege.isSelected());
-            ps.setString(19, comboStatus.getSelectedItem().toString());
-            ps.setString(20, selectedImagePath);
-
-            ps.executeUpdate();
-            loadInmates();
-            resetForm();
-            JOptionPane.showMessageDialog(this, "Inmate added successfully");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error adding inmate: " + e.getMessage());
-        }
+private void addInmate() {
+    if (txtCode.getText().isEmpty() || txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty()
+            || birthDateChooser.getDate() == null || txtAddress.getText().isEmpty()
+            || txtComplexion.getText().isEmpty() || txtEyeColor.getText().isEmpty()
+            || txtSentence.getText().isEmpty() || timeServedChooser.getDate() == null
+            || timeEndChooser.getDate() == null || txtEmergencyContact.getText().isEmpty()
+            || txtEmergencyRelation.getText().isEmpty() || txtEmergencyPhone.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all fields");
+        return;
     }
 
-    // Update Inmate
-    private void updateInmate() {
-        if (selectedInmateId == -1) {
-            return;
-        }
-
-        if (txtCode.getText().isEmpty() || txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty()
-                || birthDateChooser.getDate() == null || txtAddress.getText().isEmpty()
-                || txtComplexion.getText().isEmpty() || txtEyeColor.getText().isEmpty()
-                || txtSentence.getText().isEmpty() || timeServedChooser.getDate() == null
-                || timeEndChooser.getDate() == null || txtEmergencyContact.getText().isEmpty()
-                || txtEmergencyRelation.getText().isEmpty() || txtEmergencyPhone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields");
-            return;
-        }
-
-        try (Connection con = DBConnection.getConnection(); PreparedStatement ps = con.prepareStatement("UPDATE inmates SET "
-                + "code=?, prison_id=?, cell_block_id=?, first_name=?, last_name=?, birth_date=?, address=?, "
-                + "marital_status=?, complexion=?, eye_color=?, crime_id=?, sentence=?, time_served=?, time_end=?, "
-                + "emergency_contact_name=?, emergency_contact_relation=?, emergency_contact_phone=?, "
-                + "visitor_privilege=?, status=?, image=? WHERE id=?")) {
-
-            ps.setString(1, txtCode.getText());
-            ps.setInt(2, getSelectedId(comboPrison));
-            ps.setInt(3, getSelectedId(comboCellBlock));
-            ps.setString(4, txtFirstName.getText());
-            ps.setString(5, txtLastName.getText());
-            ps.setDate(6, new java.sql.Date(birthDateChooser.getDate().getTime()));
-            ps.setString(7, txtAddress.getText());
-            ps.setString(8, comboMaritalStatus.getSelectedItem().toString());
-            ps.setString(9, txtComplexion.getText());
-            ps.setString(10, txtEyeColor.getText());
-            ps.setInt(11, getSelectedId(comboCrime));
-            ps.setString(12, txtSentence.getText());
-            ps.setDate(13, new java.sql.Date(timeServedChooser.getDate().getTime()));
-            ps.setDate(14, new java.sql.Date(timeEndChooser.getDate().getTime()));
-            ps.setString(15, txtEmergencyContact.getText());
-            ps.setString(16, txtEmergencyRelation.getText());
-            ps.setString(17, txtEmergencyPhone.getText());
-            ps.setBoolean(18, checkVisitorPrivilege.isSelected());
-            ps.setString(19, comboStatus.getSelectedItem().toString());
-            ps.setString(20, selectedImagePath);
-            ps.setInt(21, selectedInmateId);
-
-            ps.executeUpdate();
-            loadInmates();
-            resetForm();
-            JOptionPane.showMessageDialog(this, "Inmate updated successfully");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error updating inmate: " + e.getMessage());
-        }
+    // Validate string-only fields
+    if (!txtFirstName.getText().matches("[a-zA-Z]+")) {
+        JOptionPane.showMessageDialog(this, "First Name must contain only letters");
+        return;
     }
+
+    if (!txtLastName.getText().matches("[a-zA-Z]+")) {
+        JOptionPane.showMessageDialog(this, "Last Name must contain only letters");
+        return;
+    }
+
+    // Validate number-only fields
+    if (!txtEmergencyContact.getText().matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Emergency Contact must be a number");
+        return;
+    }
+
+    if (!txtEmergencyPhone.getText().matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Emergency Phone must be a number");
+        return;
+    }
+
+    try (Connection con = DBConnection.getConnection(); PreparedStatement ps = con.prepareStatement("INSERT INTO inmates "
+            + "(code, prison_id, cell_block_id, first_name, last_name, birth_date, address, marital_status, "
+            + "complexion, eye_color, crime_id, sentence, time_served, time_end, emergency_contact_name, "
+            + "emergency_contact_relation, emergency_contact_phone, visitor_privilege, status, image) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+
+        ps.setString(1, txtCode.getText());
+        ps.setInt(2, getSelectedId(comboPrison));
+        ps.setInt(3, getSelectedId(comboCellBlock));
+        ps.setString(4, txtFirstName.getText());
+        ps.setString(5, txtLastName.getText());
+        ps.setDate(6, new java.sql.Date(birthDateChooser.getDate().getTime()));
+        ps.setString(7, txtAddress.getText());
+        ps.setString(8, comboMaritalStatus.getSelectedItem().toString());
+        ps.setString(9, txtComplexion.getText());
+        ps.setString(10, txtEyeColor.getText());
+        ps.setInt(11, getSelectedId(comboCrime));
+        ps.setString(12, txtSentence.getText());
+        ps.setDate(13, new java.sql.Date(timeServedChooser.getDate().getTime()));
+        ps.setDate(14, new java.sql.Date(timeEndChooser.getDate().getTime()));
+        ps.setString(15, txtEmergencyContact.getText());
+        ps.setString(16, txtEmergencyRelation.getText());
+        ps.setString(17, txtEmergencyPhone.getText());
+        ps.setBoolean(18, checkVisitorPrivilege.isSelected());
+        ps.setString(19, comboStatus.getSelectedItem().toString());
+        ps.setString(20, selectedImagePath);
+
+        ps.executeUpdate();
+        loadInmates();
+        resetForm();
+        JOptionPane.showMessageDialog(this, "Inmate added successfully");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error adding inmate: " + e.getMessage());
+    }
+}
+
+// Update Inmate
+private void updateInmate() {
+    if (selectedInmateId == -1) {
+        return;
+    }
+
+    if (txtCode.getText().isEmpty() || txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty()
+            || birthDateChooser.getDate() == null || txtAddress.getText().isEmpty()
+            || txtComplexion.getText().isEmpty() || txtEyeColor.getText().isEmpty()
+            || txtSentence.getText().isEmpty() || timeServedChooser.getDate() == null
+            || timeEndChooser.getDate() == null || txtEmergencyContact.getText().isEmpty()
+            || txtEmergencyRelation.getText().isEmpty() || txtEmergencyPhone.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all fields");
+        return;
+    }
+
+    // Validate string-only fields
+    if (!txtFirstName.getText().matches("[a-zA-Z]+")) {
+        JOptionPane.showMessageDialog(this, "First Name must contain only letters");
+        return;
+    }
+
+    if (!txtLastName.getText().matches("[a-zA-Z]+")) {
+        JOptionPane.showMessageDialog(this, "Last Name must contain only letters");
+        return;
+    }
+
+    // Validate number-only fields
+    if (!txtEmergencyContact.getText().matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Emergency Contact must be a number");
+        return;
+    }
+
+    if (!txtEmergencyPhone.getText().matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Emergency Phone must be a number");
+        return;
+    }
+
+    try (Connection con = DBConnection.getConnection(); PreparedStatement ps = con.prepareStatement("UPDATE inmates SET "
+            + "code=?, prison_id=?, cell_block_id=?, first_name=?, last_name=?, birth_date=?, address=?, "
+            + "marital_status=?, complexion=?, eye_color=?, crime_id=?, sentence=?, time_served=?, time_end=?, "
+            + "emergency_contact_name=?, emergency_contact_relation=?, emergency_contact_phone=?, "
+            + "visitor_privilege=?, status=?, image=? WHERE id=?")) {
+
+        ps.setString(1, txtCode.getText());
+        ps.setInt(2, getSelectedId(comboPrison));
+        ps.setInt(3, getSelectedId(comboCellBlock));
+        ps.setString(4, txtFirstName.getText());
+        ps.setString(5, txtLastName.getText());
+        ps.setDate(6, new java.sql.Date(birthDateChooser.getDate().getTime()));
+        ps.setString(7, txtAddress.getText());
+        ps.setString(8, comboMaritalStatus.getSelectedItem().toString());
+        ps.setString(9, txtComplexion.getText());
+        ps.setString(10, txtEyeColor.getText());
+        ps.setInt(11, getSelectedId(comboCrime));
+        ps.setString(12, txtSentence.getText());
+        ps.setDate(13, new java.sql.Date(timeServedChooser.getDate().getTime()));
+        ps.setDate(14, new java.sql.Date(timeEndChooser.getDate().getTime()));
+        ps.setString(15, txtEmergencyContact.getText());
+        ps.setString(16, txtEmergencyRelation.getText());
+        ps.setString(17, txtEmergencyPhone.getText());
+        ps.setBoolean(18, checkVisitorPrivilege.isSelected());
+        ps.setString(19, comboStatus.getSelectedItem().toString());
+        ps.setString(20, selectedImagePath);
+        ps.setInt(21, selectedInmateId);
+
+        ps.executeUpdate();
+        loadInmates();
+        resetForm();
+        JOptionPane.showMessageDialog(this, "Inmate updated successfully");
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error updating inmate: " + e.getMessage());
+    }
+}
+
+
     // Delete Inmate
     private void deleteInmate() {
         if (selectedInmateId == -1) {
@@ -508,7 +557,7 @@ private void uploadImage() {
 
         getContentPane().add(imgPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 45, -1, 345));
 
-        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.setMaximumSize(new java.awt.Dimension(968, 322));
         jPanel1.setMinimumSize(new java.awt.Dimension(968, 322));
@@ -592,7 +641,7 @@ private void uploadImage() {
         timeEndChooser.setForeground(new java.awt.Color(204, 204, 204));
         timeEndChooser.setFont(new java.awt.Font("Source Sans 3 Medium", 0, 14)); // NOI18N
 
-        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel17.setFont(new java.awt.Font("Source Sans 3 Black", 0, 16)); // NOI18N
         jLabel17.setText("Emergency");
@@ -617,27 +666,28 @@ private void uploadImage() {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel17)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmergencyContact, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmergencyRelation, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmergencyPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmergencyContact, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmergencyRelation, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmergencyPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel17)
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -649,7 +699,7 @@ private void uploadImage() {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtEmergencyContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18)))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         checkVisitorPrivilege.setFont(new java.awt.Font("Source Sans 3 Black", 0, 14)); // NOI18N
@@ -786,6 +836,7 @@ private void uploadImage() {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 45, -1, -1));
 
+        table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         table.setFont(new java.awt.Font("Source Sans 3 Medium", 0, 14)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -831,7 +882,7 @@ private void uploadImage() {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        FlatCarbonIJTheme.setup();
+        FlatGitHubDarkContrastIJTheme.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

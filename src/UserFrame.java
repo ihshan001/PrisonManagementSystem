@@ -1,4 +1,5 @@
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkContrastIJTheme;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -87,7 +88,9 @@ public class UserFrame extends javax.swing.JFrame {
             loadUsers();
         } catch (SQLException e) {
             e.printStackTrace();
+            
         }
+        resetfields();
     }
     
      // Delete User
@@ -105,6 +108,7 @@ public class UserFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        resetfields();
     }
 
     // Edit User
@@ -134,6 +138,7 @@ public class UserFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+            resetfields();
     }
     
     private void loadUsers() {
@@ -156,6 +161,13 @@ public class UserFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void resetfields(){
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -405,30 +417,7 @@ public class UserFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        FlatGitHubDarkContrastIJTheme.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserFrame().setVisible(true);

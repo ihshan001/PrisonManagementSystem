@@ -1,5 +1,6 @@
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkContrastIJTheme;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -1279,7 +1280,7 @@ public class ReportFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
-        FlatArcDarkIJTheme.setup();
+        FlatGitHubDarkContrastIJTheme.setup();
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

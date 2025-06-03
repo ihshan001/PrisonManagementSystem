@@ -1,4 +1,5 @@
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkContrastIJTheme;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -56,101 +57,134 @@ public class VisitorFrame extends javax.swing.JFrame {
         });
         
     }
-        // Load Inmates into ComboBox
-    private void loadInmates() {
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT id, first_name, last_name FROM inmates WHERE visitor_privilege = true");
-             ResultSet rs = ps.executeQuery()) {
-            comboInmate.removeAllItems();
-            while (rs.next()) {
-                int inmateId = rs.getInt("id");
-                String fullName = rs.getString("first_name") + " " + rs.getString("last_name");
-                comboInmate.addItem(inmateId + " - " + fullName);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+   // Load Inmates into ComboBox
+private void loadInmates() {
+    try (Connection con = DBConnection.getConnection();
+         PreparedStatement ps = con.prepareStatement("SELECT id, first_name, last_name FROM inmates WHERE visitor_privilege = 1");
+         ResultSet rs = ps.executeQuery()) {
+        comboInmate.removeAllItems();
+        while (rs.next()) {
+            int inmateId = rs.getInt("id");
+            String fullName = rs.getString("first_name") + " " + rs.getString("last_name");
+            comboInmate.addItem(inmateId + " - " + fullName);
         }
-    } // Load Visitors for selected inmate
-    private void loadVisitors(int inmateId) {
-        DefaultTableModel model = (DefaultTableModel) visitorTable.getModel();
-        model.setRowCount(0); // Clear existing rows
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT v.id, v.full_name, v.contact, v.relation, i.first_name, i.last_name FROM visitors v JOIN inmates i ON v.inmate_id = i.id WHERE v.inmate_id = ?")) {
-            ps.setInt(1, inmateId);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int visitorId = rs.getInt("id");
-                String visitorName = rs.getString("full_name");
-                String contact = rs.getString("contact");
-                String relation = rs.getString("relation");
-                String inmateFullName = rs.getString("first_name") + " " + rs.getString("last_name");
-                model.addRow(new Object[] { visitorId, visitorName, contact, relation, inmateFullName });
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+// Load Visitors for selected inmate
+private void loadVisitors(int inmateId) {
+    DefaultTableModel model = (DefaultTableModel) visitorTable.getModel();
+    model.setRowCount(0);
+    try (Connection con = DBConnection.getConnection();
+         PreparedStatement ps = con.prepareStatement(
+             "SELECT v.id, v.full_name, v.contact, v.relation, i.first_name, i.last_name " +
+             "FROM visitors v JOIN inmates i ON v.inmate_id = i.id WHERE v.inmate_id = ?")) {
+        ps.setInt(1, inmateId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int visitorId = rs.getInt("id");
+            String visitorName = rs.getString("full_name");
+            String contact = rs.getString("contact");
+            String relation = rs.getString("relation");
+            String inmateFullName = rs.getString("first_name") + " " + rs.getString("last_name");
+            model.addRow(new Object[] { visitorId, visitorName, contact, relation, inmateFullName });
         }
-    } // ActionListener for inmate JComboBox
-    private void inmateComboBoxActionPerformed() {
-        String selectedInmate = (String) comboInmate.getSelectedItem();
-        if (selectedInmate != null) {
-            selectedInmateId = Integer.parseInt(selectedInmate.split(" - ")[0]);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+// ActionListener for inmate JComboBox
+private void inmateComboBoxActionPerformed() {
+    String selectedInmate = (String) comboInmate.getSelectedItem();
+    if (selectedInmate != null && selectedInmate.contains(" - ")) {
+        try {
+            selectedInmateId = Integer.parseInt(selectedInmate.split(" - ")[0].trim());
             loadVisitors(selectedInmateId);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid inmate selection.");
         }
     }
-    // Add Visitor
-    private void addVisitor() {
-        String visitorName = txtVisitorName.getText().trim();
-        String contact = txtContact.getText().trim();
-        String relation = txtRelation.getText().trim();
-        try (Connection con = DBConnection.getConnection();
-              PreparedStatement ps = con.prepareStatement("INSERT INTO visitors (inmate_id,full_name, contact, relation, created_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)")) {
-            ps.setInt(1, selectedInmateId);
-            ps.setString(2, visitorName);
-            ps.setString(3, contact);
-            ps.setString(4, relation);
-            ps.executeUpdate();   JOptionPane.showMessageDialog(this, "Visitor Added!");
-            loadVisitors(selectedInmateId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+}
+
+// Add Visitor
+private void addVisitor() {
+    String visitorName = txtVisitorName.getText().trim();
+    String contact = txtContact.getText().trim();
+    String relation = txtRelation.getText().trim();
+
+    if (selectedInmateId <= 0) {
+        JOptionPane.showMessageDialog(this, "Please select a valid inmate before adding a visitor.");
+        return;
     }
-    // Edit Visitor
-    private void editVisitor() {
-        if (selectedVisitorId == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a visitor to edit.");
-            return;
-        }
-        String visitorName = txtVisitorName.getText().trim();
-        String contact = txtContact.getText().trim();
-        String relation = txtRelation.getText().trim();
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("UPDATE visitors SET full_name = ?, contact = ?, relation = ? WHERE id = ?")) {
-            ps.setString(1, visitorName);
-            ps.setString(2, contact);
-            ps.setString(3, relation); ps.setInt(4, selectedVisitorId);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Visitor Updated!");
-            loadVisitors(selectedInmateId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+    if (visitorName.isEmpty() || contact.isEmpty() || relation.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "All visitor fields must be filled.");
+        return;
     }
-    // Delete Visitor
-    private void deleteVisitor() {
-        if (selectedVisitorId == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a visitor to delete.");
-            return;
-        }
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("DELETE FROM visitors WHERE id = ?")) {
-            ps.setInt(1, selectedVisitorId);
-            ps.executeUpdate();  JOptionPane.showMessageDialog(this, "Visitor Deleted!");
-            loadVisitors(selectedInmateId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+    try (Connection con = DBConnection.getConnection();
+         PreparedStatement ps = con.prepareStatement(
+             "INSERT INTO visitors (inmate_id, full_name, contact, relation, created_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)")) {
+        ps.setInt(1, selectedInmateId);
+        ps.setString(2, visitorName);
+        ps.setString(3, contact);
+        ps.setString(4, relation);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Visitor Added!");
+        loadVisitors(selectedInmateId);
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error: Could not add visitor.\n" + e.getMessage());
     }
-  
+}
+
+// Edit Visitor
+private void editVisitor() {
+    if (selectedVisitorId == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a visitor to edit.");
+        return;
+    }
+
+    String visitorName = txtVisitorName.getText().trim();
+    String contact = txtContact.getText().trim();
+    String relation = txtRelation.getText().trim();
+
+    try (Connection con = DBConnection.getConnection();
+         PreparedStatement ps = con.prepareStatement(
+             "UPDATE visitors SET full_name = ?, contact = ?, relation = ? WHERE id = ?")) {
+        ps.setString(1, visitorName);
+        ps.setString(2, contact);
+        ps.setString(3, relation);
+        ps.setInt(4, selectedVisitorId);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Visitor Updated!");
+        loadVisitors(selectedInmateId);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+// Delete Visitor
+private void deleteVisitor() {
+    if (selectedVisitorId == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a visitor to delete.");
+        return;
+    }
+
+    try (Connection con = DBConnection.getConnection();
+         PreparedStatement ps = con.prepareStatement("DELETE FROM visitors WHERE id = ?")) {
+        ps.setInt(1, selectedVisitorId);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Visitor Deleted!");
+        loadVisitors(selectedInmateId);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -332,31 +366,8 @@ public class VisitorFrame extends javax.swing.JFrame {
 
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisitorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisitorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisitorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisitorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+     FlatGitHubDarkContrastIJTheme.setup();
+     java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VisitorFrame().setVisible(true);
             }

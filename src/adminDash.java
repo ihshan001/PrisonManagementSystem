@@ -1,10 +1,66 @@
 
 import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatCobalt2IJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatDraculaIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGradiantoDarkFuchsiaIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGradiantoDeepOceanIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGradiantoMidnightBlueIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGrayIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGruvboxDarkHardIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGruvboxDarkMediumIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGruvboxDarkSoftIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatHiberbeeDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatHighContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatMaterialDesignDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatMonocaiIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatSolarizedLightIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatSpacegrayIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatXcodeDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkContrastIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneLightContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneLightIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatDraculaContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatLightOwlContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatLightOwlIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDarkerContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDarkerIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDeepOceanContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialDeepOceanIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPalenightContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialPalenightIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMonokaiProContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMonokaiProIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMoonlightContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMoonlightIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatNightOwlContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatNightOwlIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedLightContrastIJTheme;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -119,6 +175,7 @@ public class adminDash extends javax.swing.JFrame {
         Reports = new javax.swing.JButton();
         Actions = new javax.swing.JButton();
         Users = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
@@ -194,12 +251,23 @@ public class adminDash extends javax.swing.JFrame {
         Users.setText("Users");
         Users.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
 
+        jLabel12.setFont(new java.awt.Font("Source Sans 3 Black", 0, 14)); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        jLabel12.setText("LogOut");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(237, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(Prisons, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CellBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,16 +289,19 @@ public class adminDash extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(Prisons, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CellBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Inmates, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Visitors, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Crimes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Actions, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Reports, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(Prisons, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CellBlocks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Inmates, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Visitors, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Crimes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Actions, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Reports, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 5, 1, new java.awt.Color(0, 0, 0)));
@@ -245,7 +316,7 @@ public class adminDash extends javax.swing.JFrame {
         searchButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
 
         themeComboBox.setFont(new java.awt.Font("Source Sans 3 Medium", 0, 14)); // NOI18N
-        themeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flat Atom One Light Contrast", "Flat Atom One Dark Contrast", "Flat Carbon", "Flat Darcula" }));
+        themeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flat Arc", "Flat Arc Dark", "Flat Arc Dark Orange", "Flat Arc Orange", "Flat Atom One Dark", "Flat Atom One Dark Contrast", "Flat Atom One Light", "Flat Atom One Light Contrast", "Flat Carbon", "Flat Cobalt2", "Flat Cyan Light", "Flat Darcula", "Flat Dark Flat", "Flat Dark Purple", "Flat Dracula", "Flat Dracula Contrast", "Flat GitHub", "Flat GitHub Contrast", "Flat GitHub Dark", "Flat GitHub Dark Contrast", "Flat Gradianto Dark Fuchsia", "Flat Gradianto Deep Ocean", "Flat Gradianto Midnight Blue", "Flat Gradianto Nature Green", "Flat Gray", "Flat Gruvbox Dark Hard", "Flat Gruvbox Dark Medium", "Flat Gruvbox Dark Soft", "Flat Hiberbee Dark", "Flat High Contrast", "Flat Light Flat", "Flat Light Owl", "Flat Light Owl Contrast", "Flat Material Design Dark", "Flat Material Darker", "Flat Material Darker Contrast", "Flat Material Deep Ocean", "Flat Material Deep Ocean Contrast", "Flat Material Lighter", "Flat Material Lighter Contrast", "Flat Material Oceanic", "Flat Material Oceanic Contrast", "Flat Material Palenight", "Flat Material Palenight Contrast", "Flat Monocai", "Flat Monokai Pro", "Flat Monokai Pro Contrast", "Flat Moonlight", "Flat Moonlight Contrast", "Flat Night Owl", "Flat Night Owl Contrast", "Flat Nord", "Flat One Dark", "Flat Solarized Dark", "Flat Solarized Dark Contrast", "Flat Solarized Light", "Flat Solarized Light Contrast", "Flat Spacegray", "Flat Vuesion", "Flat Xcode Dark" }));
         themeComboBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         themeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -711,27 +782,208 @@ public class adminDash extends javax.swing.JFrame {
 
     private void themeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeComboBoxActionPerformed
 
-        String selectedTheme = (String) themeComboBox.getSelectedItem();
-        switch (selectedTheme) {
-            case "Flat Atom One Light Contrast":
-                FlatAtomOneLightContrastIJTheme.setup();
-                break;
-            case "Flat Atom One Dark Contrast":
-                FlatAtomOneDarkContrastIJTheme.setup();
-                break;
-            case "Flat Carbon":
-                FlatCarbonIJTheme.setup();
-                break;
-            case "Flat Darcula":
-                FlatDarculaLaf.setup();
-                break;
-            // Add more themes here
-        }
-        // Update the theme of all forms
-        updateTheme();
+      String selectedTheme = (String) themeComboBox.getSelectedItem();
+switch (selectedTheme) {
+    
+    case "Flat Arc":
+        FlatArcIJTheme.setup();
+        break;
+    case "Flat Arc Dark":
+        FlatArcDarkIJTheme.setup();
+        break;
+    case "Flat Arc Dark Orange":
+        FlatArcDarkOrangeIJTheme.setup();
+        break;
+    case "Flat Arc Orange":
+        FlatArcOrangeIJTheme.setup();
+        break;
+    case "Flat Atom One Dark":
+        FlatAtomOneDarkIJTheme.setup();
+        break;
+    case "Flat Atom One Dark Contrast":
+        FlatAtomOneDarkContrastIJTheme.setup();
+        break;
+    case "Flat Atom One Light":
+        FlatAtomOneLightIJTheme.setup();
+        break;
+    case "Flat Atom One Light Contrast":
+        FlatAtomOneLightContrastIJTheme.setup();
+        break;
+    case "Flat Carbon":
+        FlatCarbonIJTheme.setup();
+        break;
+    case "Flat Cobalt2":
+        FlatCobalt2IJTheme.setup();
+        break;
+    case "Flat Cyan Light":
+        FlatCyanLightIJTheme.setup();
+        break;
+    case "Flat Darcula":
+        FlatDarculaLaf.setup();
+        break;
+    case "Flat Dark Flat":
+        FlatDarkFlatIJTheme.setup();
+        break;
+    case "Flat Dark Purple":
+        FlatDarkPurpleIJTheme.setup();
+        break;
+    case "Flat Dracula":
+        FlatDraculaIJTheme.setup();
+        break;
+    case "Flat Dracula Contrast":
+        FlatDraculaContrastIJTheme.setup();
+        break;
+    case "Flat GitHub":
+        FlatGitHubIJTheme.setup();
+        break;
+    case "Flat GitHub Contrast":
+        FlatGitHubContrastIJTheme.setup();
+        break;
+    case "Flat GitHub Dark":
+        FlatGitHubDarkIJTheme.setup();
+        break;
+    case "Flat GitHub Dark Contrast":
+        FlatGitHubDarkContrastIJTheme.setup();
+        break;
+    case "Flat Gradianto Dark Fuchsia":
+        FlatGradiantoDarkFuchsiaIJTheme.setup();
+        break;
+    case "Flat Gradianto Deep Ocean":
+        FlatGradiantoDeepOceanIJTheme.setup();
+        break;
+    case "Flat Gradianto Midnight Blue":
+        FlatGradiantoMidnightBlueIJTheme.setup();
+        break;
+    case "Flat Gradianto Nature Green":
+        FlatGradiantoNatureGreenIJTheme.setup();
+        break;
+    case "Flat Gray":
+        FlatGrayIJTheme.setup();
+        break;
+    case "Flat Gruvbox Dark Hard":
+        FlatGruvboxDarkHardIJTheme.setup();
+        break;
+    case "Flat Gruvbox Dark Medium":
+        FlatGruvboxDarkMediumIJTheme.setup();
+        break;
+    case "Flat Gruvbox Dark Soft":
+        FlatGruvboxDarkSoftIJTheme.setup();
+        break;
+    case "Flat Hiberbee Dark":
+        FlatHiberbeeDarkIJTheme.setup();
+        break;
+    case "Flat High Contrast":
+        FlatHighContrastIJTheme.setup();
+        break;
+    case "Flat Light Flat":
+        FlatLightFlatIJTheme.setup();
+        break;
+    case "Flat Light Owl":
+        FlatLightOwlIJTheme.setup();
+        break;
+    case "Flat Light Owl Contrast":
+        FlatLightOwlContrastIJTheme.setup();
+        break;
+    case "Flat Material Design Dark":
+        FlatMaterialDesignDarkIJTheme.setup();
+        break;
+    case "Flat Material Darker":
+        FlatMaterialDarkerIJTheme.setup();
+        break;
+    case "Flat Material Darker Contrast":
+        FlatMaterialDarkerContrastIJTheme.setup();
+        break;
+    case "Flat Material Deep Ocean":
+        FlatMaterialDeepOceanIJTheme.setup();
+        break;
+    case "Flat Material Deep Ocean Contrast":
+        FlatMaterialDeepOceanContrastIJTheme.setup();
+        break;
+    case "Flat Material Lighter":
+        FlatMaterialLighterIJTheme.setup();
+        break;
+    case "Flat Material Lighter Contrast":
+        FlatMaterialLighterContrastIJTheme.setup();
+        break;
+    case "Flat Material Oceanic":
+        FlatMaterialOceanicIJTheme.setup();
+        break;
+    case "Flat Material Oceanic Contrast":
+        FlatMaterialOceanicContrastIJTheme.setup();
+        break;
+    case "Flat Material Palenight":
+        FlatMaterialPalenightIJTheme.setup();
+        break;
+    case "Flat Material Palenight Contrast":
+        FlatMaterialPalenightContrastIJTheme.setup();
+        break;
+    case "Flat Monocai":
+        FlatMonocaiIJTheme.setup();
+        break;
+    case "Flat Monokai Pro":
+        FlatMonokaiProIJTheme.setup();
+        break;
+    case "Flat Monokai Pro Contrast":
+        FlatMonokaiProContrastIJTheme.setup();
+        break;
+    case "Flat Moonlight":
+        FlatMoonlightIJTheme.setup();
+        break;
+    case "Flat Moonlight Contrast":
+        FlatMoonlightContrastIJTheme.setup();
+        break;
+    case "Flat Night Owl":
+        FlatNightOwlIJTheme.setup();
+        break;
+    case "Flat Night Owl Contrast":
+        FlatNightOwlContrastIJTheme.setup();
+        break;
+    case "Flat Nord":
+        FlatNordIJTheme.setup();
+        break;
+    case "Flat One Dark":
+        FlatOneDarkIJTheme.setup();
+        break;
+    case "Flat Solarized Dark":
+        FlatSolarizedDarkIJTheme.setup();
+        break;
+    case "Flat Solarized Dark Contrast":
+        FlatSolarizedDarkContrastIJTheme.setup();
+        break;
+    case "Flat Solarized Light":
+        FlatSolarizedLightIJTheme.setup();
+        break;
+    case "Flat Solarized Light Contrast":
+        FlatSolarizedLightContrastIJTheme.setup();
+        break;
+    case "Flat Spacegray":
+        FlatSpacegrayIJTheme.setup();
+        break;
+    case "Flat Vuesion":
+        FlatVuesionIJTheme.setup();
+        break;
+    case "Flat Xcode Dark":
+        FlatXcodeDarkIJTheme.setup();
+        break;
+
+}
+
+    // Update the theme of all forms
+    updateTheme();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_themeComboBoxActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+             // code for Logout:
+        int a=JOptionPane.showConfirmDialog(
+                null,"Wanna LogOut","Select",JOptionPane.YES_NO_OPTION);
+        if(a==0)
+        {
+            setVisible(false);
+            new LoginFrame().setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     // Search function to look up inmate details.
     private void searchInmateDetails(String searchText) {
@@ -1145,29 +1397,8 @@ public class adminDash extends javax.swing.JFrame {
     }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminDash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminDash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminDash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminDash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+       FlatGitHubDarkContrastIJTheme.setup();
+            
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1199,6 +1430,7 @@ public class adminDash extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

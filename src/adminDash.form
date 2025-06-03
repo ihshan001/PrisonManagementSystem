@@ -81,7 +81,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="237" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="jLabel12" min="-2" pref="86" max="-2" attributes="0"/>
+                  <EmptySpace pref="129" max="32767" attributes="0"/>
                   <Component id="Prisons" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="CellBlocks" min="-2" pref="100" max="-2" attributes="0"/>
@@ -103,19 +105,24 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="Prisons" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="CellBlocks" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Inmates" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Visitors" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Crimes" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Actions" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Reports" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="Users" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="Prisons" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="CellBlocks" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Inmates" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Visitors" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Crimes" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Actions" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Reports" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Users" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="10" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel12" alignment="1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -234,6 +241,20 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel12">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Source Sans 3 Black" size="14" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/logout.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="LogOut"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel12MouseClicked"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -314,11 +335,67 @@
               <Font name="Source Sans 3 Medium" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Flat Atom One Light Contrast"/>
-                <StringItem index="1" value="Flat Atom One Dark Contrast"/>
-                <StringItem index="2" value="Flat Carbon"/>
-                <StringItem index="3" value="Flat Darcula"/>
+              <StringArray count="60">
+                <StringItem index="0" value="Flat Arc"/>
+                <StringItem index="1" value="Flat Arc Dark"/>
+                <StringItem index="2" value="Flat Arc Dark Orange"/>
+                <StringItem index="3" value="Flat Arc Orange"/>
+                <StringItem index="4" value="Flat Atom One Dark"/>
+                <StringItem index="5" value="Flat Atom One Dark Contrast"/>
+                <StringItem index="6" value="Flat Atom One Light"/>
+                <StringItem index="7" value="Flat Atom One Light Contrast"/>
+                <StringItem index="8" value="Flat Carbon"/>
+                <StringItem index="9" value="Flat Cobalt2"/>
+                <StringItem index="10" value="Flat Cyan Light"/>
+                <StringItem index="11" value="Flat Darcula"/>
+                <StringItem index="12" value="Flat Dark Flat"/>
+                <StringItem index="13" value="Flat Dark Purple"/>
+                <StringItem index="14" value="Flat Dracula"/>
+                <StringItem index="15" value="Flat Dracula Contrast"/>
+                <StringItem index="16" value="Flat GitHub"/>
+                <StringItem index="17" value="Flat GitHub Contrast"/>
+                <StringItem index="18" value="Flat GitHub Dark"/>
+                <StringItem index="19" value="Flat GitHub Dark Contrast"/>
+                <StringItem index="20" value="Flat Gradianto Dark Fuchsia"/>
+                <StringItem index="21" value="Flat Gradianto Deep Ocean"/>
+                <StringItem index="22" value="Flat Gradianto Midnight Blue"/>
+                <StringItem index="23" value="Flat Gradianto Nature Green"/>
+                <StringItem index="24" value="Flat Gray"/>
+                <StringItem index="25" value="Flat Gruvbox Dark Hard"/>
+                <StringItem index="26" value="Flat Gruvbox Dark Medium"/>
+                <StringItem index="27" value="Flat Gruvbox Dark Soft"/>
+                <StringItem index="28" value="Flat Hiberbee Dark"/>
+                <StringItem index="29" value="Flat High Contrast"/>
+                <StringItem index="30" value="Flat Light Flat"/>
+                <StringItem index="31" value="Flat Light Owl"/>
+                <StringItem index="32" value="Flat Light Owl Contrast"/>
+                <StringItem index="33" value="Flat Material Design Dark"/>
+                <StringItem index="34" value="Flat Material Darker"/>
+                <StringItem index="35" value="Flat Material Darker Contrast"/>
+                <StringItem index="36" value="Flat Material Deep Ocean"/>
+                <StringItem index="37" value="Flat Material Deep Ocean Contrast"/>
+                <StringItem index="38" value="Flat Material Lighter"/>
+                <StringItem index="39" value="Flat Material Lighter Contrast"/>
+                <StringItem index="40" value="Flat Material Oceanic"/>
+                <StringItem index="41" value="Flat Material Oceanic Contrast"/>
+                <StringItem index="42" value="Flat Material Palenight"/>
+                <StringItem index="43" value="Flat Material Palenight Contrast"/>
+                <StringItem index="44" value="Flat Monocai"/>
+                <StringItem index="45" value="Flat Monokai Pro"/>
+                <StringItem index="46" value="Flat Monokai Pro Contrast"/>
+                <StringItem index="47" value="Flat Moonlight"/>
+                <StringItem index="48" value="Flat Moonlight Contrast"/>
+                <StringItem index="49" value="Flat Night Owl"/>
+                <StringItem index="50" value="Flat Night Owl Contrast"/>
+                <StringItem index="51" value="Flat Nord"/>
+                <StringItem index="52" value="Flat One Dark"/>
+                <StringItem index="53" value="Flat Solarized Dark"/>
+                <StringItem index="54" value="Flat Solarized Dark Contrast"/>
+                <StringItem index="55" value="Flat Solarized Light"/>
+                <StringItem index="56" value="Flat Solarized Light Contrast"/>
+                <StringItem index="57" value="Flat Spacegray"/>
+                <StringItem index="58" value="Flat Vuesion"/>
+                <StringItem index="59" value="Flat Xcode Dark"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
